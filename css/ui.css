@@ -143,7 +143,6 @@ body {
   transform: translate(0, var(--keySizeOffset));
 }
 
-
 .c-KeyCap:active:after,
 .c-KeyCap.is-pressed:after {
   opacity: 1;
