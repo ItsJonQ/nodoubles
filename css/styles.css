@@ -2,6 +2,11 @@ html, body {
   margin: 0;
 }
 
+html {
+  --colorWhite: 360, 100%, 100%;
+  --colorBlack: 0, 0%, 0%;
+}
+
 body {
   background-color: #f9f9f9;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -28,37 +33,58 @@ body {
 }
 
 .c-KeyPad {
-  --keySize: 64px;
-  --keySizeOffset: 4px;
-  --keyWidth: calc(var(--keySize) + var(--keySizeOffset));
-  --keyHeight: 5px;
-  --keyBorderRadius: 8px;
-  --keyLightBXSDW: 0 1px 0 #fff, 0 2px 0 #aaa;
+  --keyCapColor: #eee;
+  --keyPressShadow: radial-gradient(circle, hsla(var(--colorBlack), 0.1) 0%, hsla(var(--colorBlack), 0) 70%);
+  --keyLetterColor: hsla(var(--colorBlack), 0.7);
+  --keyHighlight: hsla(var(--colorWhite), 0.4);
+  --keyShadow: hsla(var(--colorBlack), 0.2);
+  --keyInnerShadow: hsla(var(--colorBlack), 0.0);
+}
+
+.c-KeyPad--dark {
+  --keyCapColor: #222;
+  --keyPressShadow: radial-gradient(circle, hsla(var(--colorBlack), 0.4) 0%, hsla(var(--colorBlack), 0) 70%);
+  --keyLetterColor: hsla(var(--colorWhite), 0.9);
+  --keyHighlight: hsla(var(--colorWhite), 0.2);
+  --keyInnerShadow: hsla(var(--colorBlack), 0.4);
+}
+
+.c-KeyPad {
   display: flex;
 }
 
 .c-Key {
-  --bgColor: hsla(0, 0%, 0%, 0.9);
+  --keySize: 64px;
+  --keySizeOffset: 4px;
+  --keyWidth: calc(var(--keySize) + var(--keySizeOffset));
+  --keyHeight: 4px;
+  --keyTotalHeight: calc(var(--keySize) + var(--keySizeOffset));
+  --keyBorderRadius: 8px;
+  --keyBXSDW: 0 calc((var(--keyHeight) + 1px) * -1) 0 var(--keyShadow) inset, 0 calc((var(--keyHeight) + 2px) * -1) 0 var(--keyHighlight) inset, 0 0 0 1px hsla(var(--colorWhite), 0.1) inset;
+
+  /* --keyBXSDWPressed: 0 -1px 0 0 hsla(var(--colorBlack), 0.3) inset, 0 -2px 0 0 hsla(var(--colorWhite), 0.4) inset; */
+  --bgColor: hsla(var(--colorBlack), 0.9);
   background-color: var(--bgColor);
   border-radius: var(--keyBorderRadius);
-  box-shadow: 0 1px 0 2px var(--bgColor), 0 2px 0 2px hsla(360, 100%, 100%, 0.4);
+  box-shadow: 0 1px 0 2px var(--bgColor), 0 2px 0 2px hsla(var(--colorWhite), 0.4);
   display: block;
   height: calc(var(--keySize) + var(--keyHeight));
   margin: 4px;
+  overflow: hidden;
   position: relative;
   width: var(--keyWidth);
 }
 
 .c-KeyCap {
-  --keyCapColor: #eee;
   align-items: center;
   background-color: var(--keyCapColor);
+  background-image: radial-gradient(circle at center top, hsla(var(--colorWhite), 0.2) 0%, hsla(var(--colorWhite), 0) 50%);
   border-radius: var(--keyBorderRadius);
-  box-shadow: var(--keyLightBXSDW), 0 var(--keyHeight) 0 #bbb;
+  box-shadow: var(--keyBXSDW), 0 calc(var(--keyHeight) * -1) 0 hsla(var(--colorBlack), 0.3) inset, 0 0 10px var(--keyInnerShadow) inset;
   cursor: pointer;
-  color: #333;
+  color: var(--keyLetterColor);
   display: flex;
-  height: var(--keySize);
+  height: var(--keyTotalHeight);
   justify-content: center;
   position: relative;
   width: var(--keyWidth);
@@ -68,7 +94,7 @@ body {
 
 .c-KeyCap:after {
   content: "";
-  background-image: radial-gradient(circle, hsla(0, 0%, 0%, 0.1) 0%, hsla(0, 0%, 0%, 0) 70%);
+  background-image: var(--keyPressShadow);
   border-radius: var(--keyBorderRadius);
   height: var(--keySize);
   opacity: 0;
@@ -78,8 +104,7 @@ body {
 
 .c-KeyCap:active,
 .c-KeyCap.is-pressed {
-  box-shadow: var(--keyLightBXSDW), 0 1px 0 #bbb;
-  transform: translate(0, 4px);
+  transform: translate(0, var(--keySizeOffset));
 }
 
 
@@ -89,9 +114,9 @@ body {
 }
 
 .c-KeyCap--marked:before {
-  background-color: hsla(0, 0%, 0%, 0.02);
+  background-color: hsla(var(--colorBlack), 0.02);
   border-radius: 99999px;
-  box-shadow: 0 -1px 0 hsla(360, 100%, 100%, 0.4), 0 1px 0 hsla(0, 0%, 0%, 0.2);
+  box-shadow: 0 -1px 0 hsla(var(--colorWhite), 0.4), 0 1px 0 hsla(var(--colorBlack), 0.2);
   content: "";
   height: 2px;
   position: absolute;
