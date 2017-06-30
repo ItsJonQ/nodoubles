@@ -1,0 +1,23 @@
+:root {
+  --utilMarginSize: 4px;
+}
+
+/* Alignment */
+.u-centralize {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+/* Interaction */
+.u-no-select {
+  user-select: none;
+}
+
+/* Spacing */
+.u-mrg-4 {
+  margin: calc(var(--utilMarginSize) * 4);
+}
+.u-mrg-8 {
+  margin: calc(var(--utilMarginSize) * 8);
+}

@@ -2,17 +2,18 @@
 <html>
   <head>
     <title>NoDoubles</title>
-    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/ui.css" />
+    <link rel="stylesheet" href="./css/utils.css" />
   </head>
   <body>
-    <div class="c-GamePad">
+    <div class="c-GamePad u-centralize">
       <div class="c-Gamepad__content">
 
         <div class="c-Logo">
-          NoDoubles
+          <strong>No</strong>Doubles
         </div>
 
-        <div class="c-KeyPad c-KeyPad--dark">
+        <div id="keyPad" class="c-KeyPad c-KeyPad--dark u-mrg-4 u-no-select">
           <div class="c-Key">
             <div class="c-KeyCap c-KeyCap--marked" id="keyCapOne">
               <div class="c-KeyCap__letter">J</div>
@@ -25,19 +26,12 @@
           </div>
         </div>
 
-        <div class="c-KeyPad">
-          <div class="c-Key">
-            <div class="c-KeyCap c-KeyCap--marked" id="keyCapOne">
-              <div class="c-KeyCap__letter">J</div>
-            </div>
-          </div>
-          <div class="c-Key">
-            <div class="c-KeyCap" id="keyCapTwo">
-              <div class="c-KeyCap__letter">K</div>
-            </div>
-          </div>
+        <div class="s-Options u-centralize u-mrg-8">
+          <label class="u-no-select">
+            <input type="checkbox" id="optionsDarkKey" checked onchange="toggleKeyCapColor()">
+            Dark keys
+          </label>
         </div>
-
 
       </div>
     </div>

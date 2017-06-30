@@ -1,6 +1,7 @@
+const keyPad = document.getElementById('keyPad');
 const keyOne = document.getElementById('keyCapOne');
 const keyTwo = document.getElementById('keyCapTwo');
-
+const optionsDarkKey = document.getElementById('optionsDarkKey');
 
 const KEYCODES = {
   j: 74,
@@ -25,6 +26,10 @@ const handleKeyUp = (e) => {
   if (!isGameKey(e)) return;
   const key = isKeyOne(e) ? keyOne : keyTwo;
   key.classList.remove('is-pressed');
+};
+
+const toggleKeyCapColor = () => {
+  keyPad.classList.toggle('c-KeyPad--dark');
 };
 
 document.addEventListener('keydown', handleKeyDown, false);
