@@ -32,5 +32,9 @@ const toggleKeyCapColor = () => {
   keyPad.classList.toggle('c-KeyPad--dark');
 };
 
+const toggleKeyCapType = () => {
+  keyPad.classList.toggle('c-KeyPad--laptop');
+};
+
 document.addEventListener('keydown', handleKeyDown, false);
 document.addEventListener('keyup', handleKeyUp, false);

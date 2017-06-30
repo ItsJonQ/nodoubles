@@ -13,23 +13,31 @@
           <strong>No</strong>Doubles
         </div>
 
-        <div id="keyPad" class="c-KeyPad c-KeyPad--dark u-mrg-4 u-no-select">
+        <div id="keyPad" class="c-KeyPad c-KeyPad--dark c-KeyPad--laptop u-mrg-4 u-no-select u-centralize">
           <div class="c-Key">
-            <div class="c-KeyCap c-KeyCap--marked" id="keyCapOne">
-              <div class="c-KeyCap__letter">J</div>
+            <div class="c-KeyCapShell" id="keyCapOne">
+              <div class="c-KeyCap c-KeyCap--marked">
+                <div class="c-KeyCap__letter">J</div>
+              </div>
             </div>
           </div>
           <div class="c-Key">
-            <div class="c-KeyCap" id="keyCapTwo">
-              <div class="c-KeyCap__letter">K</div>
+            <div class="c-KeyCapShell" id="keyCapTwo">
+              <div class="c-KeyCap">
+                <div class="c-KeyCap__letter">K</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="s-Options u-centralize u-mrg-8">
-          <label class="u-no-select">
+        <div class="s-Options u-centralize u-mrg-4">
+          <label class="u-no-select u-mrg-2">
             <input type="checkbox" id="optionsDarkKey" checked onchange="toggleKeyCapColor()">
             Dark keys
+          </label>
+          <label class="u-no-select u-mrg-2">
+            <input type="checkbox" id="optionsLaptopKeyCaps" checked onchange="toggleKeyCapType()">
+            Laptop keycaps
           </label>
         </div>
 
