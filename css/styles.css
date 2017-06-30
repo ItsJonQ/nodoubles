@@ -1,0 +1,88 @@
+html, body {
+  margin: 0;
+}
+
+body {
+  background-color: #f9f9f9;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.c-GamePad {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100%;
+}
+
+.c-Logo {
+  font-size: 32px;
+  font-weight: 300;
+  margin-bottom: 12px;
+  margin-top: -32px;
+  text-align: center;
+}
+
+.c-KeyPad {
+  --keySize: 64px;
+  --keySizeOffset: 4px;
+  --keyWidth: calc(var(--keySize) + var(--keySizeOffset));
+  --keyHeight: 5px;
+  --keyBorderRadius: 8px;
+  --keyLightBXSDW: 0 1px 0 #fff, 0 2px 0 #aaa;
+  display: flex;
+}
+
+.c-Key {
+  --bgColor: hsla(0, 0%, 0%, 0.9);
+  background-color: var(--bgColor);
+  border-radius: var(--keyBorderRadius);
+  box-shadow: 0 1px 0 2px var(--bgColor), 0 2px 0 2px hsla(360, 100%, 100%, 0.4);
+  display: block;
+  height: calc(var(--keySize) + var(--keyHeight));
+  margin: 4px;
+  position: relative;
+  width: var(--keyWidth);
+}
+
+.c-KeyCap {
+  align-items: center;
+  background-color: #eee;
+  border-radius: var(--keyBorderRadius);
+  box-shadow: var(--keyLightBXSDW), 0 var(--keyHeight) 0 #bbb;
+  cursor: pointer;
+  color: #333;
+  display: flex;
+  height: var(--keySize);
+  justify-content: center;
+  position: relative;
+  width: var(--keyWidth);
+  user-select: none;
+  z-index: 1;
+}
+
+.c-KeyCap:active,
+.c-KeyCap.is-pressed {
+  box-shadow: var(--keyLightBXSDW), 0 1px 0 #bbb;
+  transform: translate(0, 4px);
+}
+
+.c-KeyCap--marked:before {
+  background-color: hsla(0, 0%, 0%, 0.02);
+  border-radius: 99999px;
+  box-shadow: 0 -1px 0 hsla(360, 100%, 100%, 0.4), 0 1px 0 hsla(0, 0%, 0%, 0.2);
+  content: "";
+  height: 2px;
+  position: absolute;
+  width: 14px;
+  bottom: calc(var(--keySize) / 5);
+}
+
+.c-KeyCap__letter {
+  font-size: 18px;
+  user-select: none;
+}
