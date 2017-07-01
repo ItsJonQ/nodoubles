@@ -26,6 +26,8 @@ const handleKeyUp = (e) => {
   if (!isGameKey(e)) return;
   const key = isKeyOne(e) ? keyOne : keyTwo;
   key.classList.remove('is-pressed');
+
+  Sequencer.track(isKeyOne(e) ? 1 : 2);
 };
 
 const toggleKeyCapColor = () => {
